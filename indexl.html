@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Pick List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #9599af;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>NBA Picks</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Point Spread</th>
+                <th>Your Pick</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Knicks</td>
+                <td>Nets</td>
+                <td>-3.5</td>
+                <td>
+                    <select id="pick1">
+                        <option value="team1">Team 1</option>
+                        <option value="team2">Team 2</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- Add more rows for additional games -->
+
+            <tr>
+                <td>2</td>
+                <td>Pelicans</td>
+                <td>Bulls</td>
+                <td>-7.5</td>
+                <td>
+                    <select id="pick1">
+                        <option value="team1">Team 1</option>
+                        <option value="team2">Team 2</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Celtics</td>
+                <td>Spurs</td>
+                <td>-1.5</td>
+                <td>
+                    <select id="pick1">
+                        <option value="team1">Team 1</option>
+                        <option value="team2">Team 2</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="submitPicks()">Submit Picks</button>
+
+
+    <div class="container">
+        <h1>FormSubmit Demo</h1>
+        <form target="_blank" action="https://formsubmit.co/jjlsys@gmail.com" method="POST">
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+              </div>
+              <div class="col">
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+        </form>
+      </div>
+
+    <script>
+        function submitPicks() {
+            // Collect and process user picks
+            const picks = [];
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const gameNumber = row.cells[0].innerText;
+                const team1 = row.cells[1].innerText;
+                const team2 = row.cells[2].innerText;
+                const pointSpread = row.cells[3].innerText;
+                const userPick = row.cells[4].querySelector('select').value;
+
+                picks.push({
+                    gameNumber,
+                    team1,
+                    team2,
+                    pointSpread,
+                    userPick
+                });
+            });
+        
+            // Display or process the collected picks (you can customize this part)
+            console.log(picks);
+            alert('Picks submitted successfully!');
+        }
+     
+    </script>
+
+
+            
